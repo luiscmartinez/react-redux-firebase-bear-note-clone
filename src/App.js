@@ -65,7 +65,7 @@ font-size: 1.2rem;
 height: 100%;
 flex-grow: 1;
 font-family: Roboto;
-color: darkslategray;
+color: black;
 `
 
 const NoteList = styled.ul`
@@ -104,6 +104,7 @@ font-weight: bold;
 
 const NoteTextBody = styled.p`
 padding: 10px 0;
+color: #333333;
 `
 
 const NewNote = styled.button`
