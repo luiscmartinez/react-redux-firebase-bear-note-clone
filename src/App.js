@@ -1,65 +1,154 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from './actions'
-import './App.css'
+import styled from 'styled-components'
+import { Menu, Search, PlusSquare } from 'react-feather'
+import moment from 'moment'
+import firebase from 'firebase'
 
+const config = {
+  apiKey: 'AIzaSyDqL8yTHEV2iRUOjDNAwdMLPYBYQlUY1vU',
+  authDomain: 'bear-note-app.firebaseapp.com',
+  databaseURL: 'https://bear-note-app.firebaseio.com',
+  projectId: 'bear-note-app',
+  storageBucket: 'bear-note-app.appspot.com',
+  messagingSenderId: '365864384527'
+}
+
+firebase.initializeApp(config)
+
+const Container = styled.div`
+display: flex;
+flex-flow: column;
+min-height: 100vh;
+width: 100%;
+position: relative;
+`
+
+const NavBar = styled.header`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid darkgrey;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  opacity:1;
+  background-color: #FBFBFB;
+`
+
+const MenuButton = styled.button`
+width: 50px;
+height: 50px;
+background-color: transparent;
+border: 0px;
+`
+
+const SearchButton = styled.button`
+width: 50px;
+height: 50px;
+background-color: transparent;
+border: 0px;
+`
+const NavTitle = styled.h1`
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 1.2rem;
+height: 100%;
+flex-grow: 1;
+font-family: Roboto;
+color: darkslategray;
+`
+
+const NoteList = styled.ul`
+height: 100%;
+width: 100%;
+background-color: #FBFBFB;
+
+`
+
+const NoteContainer = styled.li`
+display: flex;
+min-height: 100px;
+width: 100%;
+margin-top: 20px;
+`
+
+const NoteMoment = styled.div`
+width: 30%;
+color: darkgrey;
+font-size: 0.8rem;
+margin-left: 10px;
+`
+
+const Note = styled.div`
+width: 70%;
+border-bottom: 1px solid gray;
+overflow: hidden;
+`
+
+const NoteTitle = styled.h1`
+margin-bottom: 10px;
+font-size: 1.4rem;
+font-weight: bold;
+`
+
+const NoteTextBody = styled.p`
+padding: 10px 0;
+`
+
+const NewNote = styled.button`
+position: fixed;
+bottom: 10px;
+right: 10px;
+height: 60px;
+width: 60px;
+border-radius: 50%;
+background-color: #C14D50;
+`
 class App extends Component {
   componentDidMount () {
     this.props.fetchNotes()
   }
   render () {
+    const { notes } = this.props
     return (
-      <div className='app'>
-        <div className='sidebarContainer'>
-          <div className='preferenceContainer'>
-            <i className='fas fa-cloud' />
-            <i className='fas fa-sliders-h' />
-          </div>
-          <div className='noteListContainer'>
-            {/* //* list of untagged
-            //* list of todo
-            //* list of today's notes */}
-          </div>
-        </div>
-        <div className='notesContainer'>
-          <div className='searchContainer'>
-            <input className='searchNotes' placeholder='Search Notes' />
-            <i className='newNote far fa-edit fa-2x' />
-          </div>
-          <div className='listContainer'>
-            {this.props.notes.map(note => (
-              <div
-                style={{
-                  height: '95px',
-                  overflow: 'hidden',
-                  margin: '19px',
-                  borderBottom: '1px solid darkgrey'
-                }}
-              >
-                <h3 style={{ marginLeft: '10px', marginBottom: '10px' }}>
+      <Container>
+        <NavBar>
+          <MenuButton>
+            <Menu color='#9F9F9F' size='20px' />
+          </MenuButton>
+          <NavTitle>
+            NOTES
+          </NavTitle>
+          <SearchButton>
+            <Search color='#9F9F9F' size='20px' />
+          </SearchButton>
+        </NavBar>
+        <NoteList>
+          {notes.map(note => (
+            <NoteContainer key={note._id} note={note}>
+              <NoteMoment>
+                {moment().startOf('hour').fromNow()}
+              </NoteMoment>
+              <Note>
+                <NoteTitle>
                   {note.title}
-                </h3>
-                <p>
+                </NoteTitle>
+                <NoteTextBody>
                   {note.textBody}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className='noteContainer'>3</div>
-        <div className='noteSideNav'>
-          <div className='sideNav-top'>
-            <i className='infoIcon fas fa-info-circle' />
-            <i className='uploadIcon fas fa-file-upload' />
-            <i className='trashIcon fas fa-trash' />
-          </div>
-          <div className='sideNav-bot'>
-            <i className='editIcon fas fa-pen-square' />
-            <i className='layoutIcon fas fa-window-restore' />{' '}
-          </div>
-
-        </div>
-      </div>
+                </NoteTextBody>
+              </Note>
+              <NewNote>
+                <PlusSquare color='white' size='30px' />
+              </NewNote>
+            </NoteContainer>
+          ))}
+        </NoteList>
+      </Container>
     )
   }
 }
