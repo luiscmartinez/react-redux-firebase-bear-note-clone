@@ -26,10 +26,15 @@ class App extends Component {
             <input className='searchNotes' placeholder='Search Notes' />
             <i className='newNote far fa-edit fa-2x' />
           </div>
-          <div className='listContainer' style={{ overflowY: 'scroll' }}>
+          <div className='listContainer'>
             {this.props.notes.map(note => (
               <div
-                style={{ height: '95px', overflow: 'hidden', margin: '19px' }}
+                style={{
+                  height: '95px',
+                  overflow: 'hidden',
+                  margin: '19px',
+                  borderBottom: '1px solid darkgrey'
+                }}
               >
                 <h3 style={{ marginLeft: '10px', marginBottom: '10px' }}>
                   {note.title}

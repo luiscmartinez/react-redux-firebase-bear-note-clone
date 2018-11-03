@@ -176,7 +176,7 @@ button:active {
 }
 
 .sidebarContainer {
-  width: 130px;
+  min-width: 190px;
   min-height: 100vh;
   background-color: RGB(34, 37, 39)
 }
