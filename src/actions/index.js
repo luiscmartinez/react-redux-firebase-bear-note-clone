@@ -1,13 +1,14 @@
 import axios from 'axios'
+import { db } from '../App'
 
 export const FETCH_NOTES = 'FETCH_NOTES'
 
 export const fetchNotes = () => dispatch => {
-  axios
-    .get('https://fe-notes.herokuapp.com/note/get/all')
-    .then(res => {
-      console.log(res.data)
-      dispatch({ type: FETCH_NOTES, payload: res.data })
-    })
-    .catch(err => console.error(err))
+  db.collection('notes').get().then(querySnapshot => {
+    const docArr = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+    dispatch({ type: FETCH_NOTES, payload: docArr })
+  })
 }

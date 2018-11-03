@@ -17,6 +17,10 @@ const config = {
 
 firebase.initializeApp(config)
 
+export const db = firebase.firestore()
+
+db.settings({ timestampsInSnapshots: true })
+
 const Container = styled.div`
 display: flex;
 flex-flow: column;
@@ -130,7 +134,7 @@ class App extends Component {
         </NavBar>
         <NoteList>
           {notes.map(note => (
-            <NoteContainer key={note._id} note={note}>
+            <NoteContainer key={note.id} note={note}>
               <NoteMoment>
                 {moment().startOf('hour').fromNow()}
               </NoteMoment>
@@ -139,7 +143,7 @@ class App extends Component {
                   {note.title}
                 </NoteTitle>
                 <NoteTextBody>
-                  {note.textBody}
+                  {note.content}
                 </NoteTextBody>
               </Note>
               <NewNote>
