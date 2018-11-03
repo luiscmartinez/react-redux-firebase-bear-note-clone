@@ -27,6 +27,7 @@ flex-flow: column;
 min-height: 100vh;
 width: 100%;
 position: relative;
+background-color: #FBFBFB;
 `
 
 const NavBar = styled.header`
@@ -68,6 +69,7 @@ color: darkslategray;
 `
 
 const NoteList = styled.ul`
+min-height: 100vh;
 height: 100%;
 width: 100%;
 background-color: #FBFBFB;
