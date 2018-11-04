@@ -1,7 +1,7 @@
-import axios from 'axios'
-import { db } from '../App'
+import { db } from '../views/NoteListContainer'
 
 export const FETCH_NOTES = 'FETCH_NOTES'
+export const CREATE_NOTE = 'CREATE_NOTE'
 
 export const fetchNotes = () => dispatch => {
   db.collection('notes').get().then(querySnapshot => {
@@ -11,4 +11,16 @@ export const fetchNotes = () => dispatch => {
     }))
     dispatch({ type: FETCH_NOTES, payload: docArr })
   })
+}
+
+export const createNote = note => dispatch => {
+  db
+    .collection('notes')
+    .add(note)
+    .then(docRef =>
+      dispatch({ type: CREATE_NOTE, payload: { ...note, id: docRef.id } })
+    )
+    .catch(error => {
+      console.error('Error adding document: ', error)
+    })
 }

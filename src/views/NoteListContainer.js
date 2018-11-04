@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from './actions'
+import * as actions from '../actions'
 import styled from 'styled-components'
 import { Menu, Search, PlusSquare } from 'react-feather'
 import moment from 'moment'
 import firebase from 'firebase'
-
+import { Link } from 'react-router-dom'
 const config = {
   apiKey: 'AIzaSyDqL8yTHEV2iRUOjDNAwdMLPYBYQlUY1vU',
   authDomain: 'bear-note-app.firebaseapp.com',
@@ -84,14 +84,15 @@ margin-top: 20px;
 `
 
 const NoteMoment = styled.div`
-width: 30%;
+width: 30px;
 color: darkgrey;
-font-size: 0.8rem;
+font-size: 0.6rem;
 margin-left: 10px;
+overflow: hidden;
 `
 
 const Note = styled.div`
-width: 70%;
+width: 90%;
 border-bottom: 1px solid gray;
 overflow: hidden;
 `
@@ -116,7 +117,7 @@ width: 60px;
 border-radius: 50%;
 background-color: #C14D50;
 `
-class App extends Component {
+class NoteListContainer extends Component {
   componentDidMount () {
     this.props.fetchNotes()
   }
@@ -150,7 +151,9 @@ class App extends Component {
                 </NoteTextBody>
               </Note>
               <NewNote>
-                <PlusSquare color='white' size='30px' />
+                <Link to='/create'>
+                  <PlusSquare color='white' size='30px' />
+                </Link>
               </NewNote>
             </NoteContainer>
           ))}
@@ -164,4 +167,4 @@ const mapStateToProps = ({ notes }) => ({
   notes
 })
 
-export default connect(mapStateToProps, actions)(App)
+export default connect(mapStateToProps, actions)(NoteListContainer)

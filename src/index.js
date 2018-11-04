@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import App from './views/App'
 import { applyMiddleware, createStore, compose } from 'redux'
 import * as serviceWorker from './serviceWorker'
 import thunk from 'redux-thunk'
