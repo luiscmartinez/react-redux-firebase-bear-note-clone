@@ -4,7 +4,7 @@ const notesReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_NOTES:
       return action.payload.sort((a, b) => {
-        return Number(a.createdAt) - Number(b.createdAt)
+        return Number(b.createdAt) - Number(a.createdAt)
       })
     default:
       return state

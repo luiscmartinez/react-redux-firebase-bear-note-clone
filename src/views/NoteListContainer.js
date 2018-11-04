@@ -6,6 +6,33 @@ import { Menu, Search, PlusSquare } from 'react-feather'
 import moment from 'moment'
 import firebase from 'firebase'
 import { Link } from 'react-router-dom'
+
+moment.relativeTimeThreshold('s', 60)
+moment.relativeTimeThreshold('ss', 5)
+moment.relativeTimeThreshold('m', 60)
+moment.relativeTimeThreshold('h', 20)
+moment.relativeTimeThreshold('d', 25)
+moment.relativeTimeThreshold('M', 10)
+
+moment.updateLocale('en', {
+  relativeTime: {
+    future: 'in %s',
+    past: '%s',
+    s: 'just now',
+    ss: '%ds',
+    m: '%dm',
+    mm: '%dm',
+    h: '%dh',
+    hh: '%dh',
+    d: '%dday',
+    dd: '%ddays',
+    M: '%dmonth',
+    MM: '%dmonths',
+    y: '%dyear',
+    yy: '%dyears'
+  }
+})
+
 const config = {
   apiKey: 'AIzaSyDqL8yTHEV2iRUOjDNAwdMLPYBYQlUY1vU',
   authDomain: 'bear-note-app.firebaseapp.com',
@@ -85,7 +112,7 @@ margin-top: 20px;
 const NoteMoment = styled.div`
 width: 30px;
 color: darkgrey;
-font-size: 0.6rem;
+font-size: .6rem;
 margin-left: 10px;
 overflow: hidden;
 `
@@ -139,7 +166,7 @@ class NoteListContainer extends Component {
           {notes.map(note => (
             <NoteContainer key={note.id} note={note}>
               <NoteMoment>
-                {moment().startOf('hour').fromNow()}
+                {moment(note.createdAt).fromNow()}
               </NoteMoment>
               <Note>
                 <NoteTitle>
