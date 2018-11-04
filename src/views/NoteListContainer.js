@@ -71,9 +71,8 @@ color: black;
 const NoteList = styled.ul`
 min-height: 100vh;
 height: 100%;
-width: 100%;
+min-width: 100%;
 background-color: #FBFBFB;
-
 `
 
 const NoteContainer = styled.li`
@@ -150,13 +149,14 @@ class NoteListContainer extends Component {
                   {note.content}
                 </NoteTextBody>
               </Note>
-              <NewNote>
-                <Link to='/create'>
-                  <PlusSquare color='white' size='30px' />
-                </Link>
-              </NewNote>
+
             </NoteContainer>
           ))}
+          <NewNote>
+            <Link to='/create'>
+              <PlusSquare color='white' size='30px' />
+            </Link>
+          </NewNote>
         </NoteList>
       </Container>
     )
