@@ -33,7 +33,7 @@
     align-items: center;
     font-size: 1.2rem;
     font-family: Roboto;
-    color: black;
+    color: $color-title;
   }
   .nav-search {
     width: 50px;
@@ -69,7 +69,7 @@
   }
   .note-content {
     padding: 10px 0;
-    color: #333333;
+    color: $color-content;
   }
   .note-nav {
     border-bottom: 1px solid $color-border;
@@ -81,6 +81,6 @@
     height: 60px;
     width: 60px;
     border-radius: 50%;
-    background-color: #C14D50;
+    background-color: $color-newNote;
   }
 }

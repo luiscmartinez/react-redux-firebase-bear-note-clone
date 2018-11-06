@@ -169,7 +169,7 @@ table {
   align-items: center;
   font-size: 1.2rem;
   font-family: Roboto;
-  color: black;
+  color: #000000;
 }
 .note-list .nav-search {
   width: 50px;
@@ -205,7 +205,7 @@ table {
 }
 .note-list .note-content {
   padding: 10px 0;
-  color: #333333;
+  color: #9D9D9E;
 }
 .note-list .note-nav {
   border-bottom: 1px solid #D8D8D8;
@@ -217,7 +217,7 @@ table {
   height: 60px;
   width: 60px;
   border-radius: 50%;
-  background-color: #C14D50;
+  background-color: #DC4B4E;
 }
 
 .create-note {
