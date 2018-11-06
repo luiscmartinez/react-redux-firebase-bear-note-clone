@@ -1,8 +1,6 @@
-import { db } from '../views/NoteListContainer'
+import { db } from '../../views/NoteListContainer'
 
-export const FETCH_NOTES = 'FETCH_NOTES'
-export const CREATE_NOTE = 'CREATE_NOTE'
-export const UPDATE_NOTE = 'UPDATE_NOTE'
+import { CREATE_NOTE, FETCH_NOTES, UPDATE_NOTE } from './types'
 
 export const fetchNotes = () => dispatch => {
   db.collection('notes').get().then(querySnapshot => {
@@ -36,4 +34,12 @@ export const updateNote = note => dispatch => {
     .doc(note.id)
     .set(note)
     .then(() => dispatch({ type: UPDATE_NOTE, payload: note }))
+}
+
+export const deleteNote = id => dispatch => {
+  db
+    .collections('notes')
+    .doc(id)
+    .delete()
+    .then(() => dispatch({ type: UPDATE_NOTE, payload: id }))
 }

@@ -1,0 +1,62 @@
+.create-note {
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $color-bkg;
+  .create-note-animated {
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+  }
+  .nav {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $color-svg;
+  }
+  .left-chevron {
+    color: $color-svg;
+    padding: 10px;
+  }
+  .menu-share {
+    color: $color-svg;
+    border: 0;
+    align-self: flex-end;
+    background: transparent;
+    padding: 0 10px;
+  }
+  .menu-info {
+    color: $color-svg;
+    border: 0;
+    padding: 10px;
+    background: transparent;
+  }
+  .noteContent {
+    display: flex;
+  }
+  .markdown {
+    width: 5%;
+    text-align: center;
+    color: $color-time
+  }
+  .form-newNote {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 90%;
+    .createTitle {
+      background-color: $color-bkg;
+      font-size: 1.6rem;
+      height: 30px;
+      border: 0;
+      font-weight: 600;
+    }
+    .createContent {
+      background-color: $color-bkg;
+      font-size: 1.4rem;
+      border: 0;
+      height: 100%;
+    }
+  }
+}
