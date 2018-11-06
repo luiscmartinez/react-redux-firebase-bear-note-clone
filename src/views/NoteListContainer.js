@@ -4,7 +4,6 @@ import * as actions from '../store/actions'
 import { Menu, Search, PlusSquare } from 'react-feather'
 import moment from 'moment'
 import firebase from 'firebase'
-import { Link } from 'react-router-dom'
 import { TweenLite, Power1 } from 'gsap/all'
 
 moment.relativeTimeThreshold('s', 60)
@@ -55,16 +54,17 @@ class NoteListContainer extends Component {
   }
 
   handleCreateNote = () => {
-    TweenLite.to(this.container, 0.3, {
-      autoAlpha: 0,
+    TweenLite.to(this.container, 1, {
+      left: '-100%',
       ease: Power1.easeOut,
       onComplete: () => this.props.history.push('/create')
     })
   }
+
   componentDidMount () {
     this.props.fetchNotes()
     TweenLite.from(this.container, 1, {
-      autoAlpha: 0,
+      left: '-100%',
       ease: Power1.easeOut
     })
   }
@@ -102,6 +102,15 @@ class NoteListContainer extends Component {
                     {note.content}
                   </p>
                 </div>
+                <button
+                  className='note-nav'
+                  onClick={() => {
+                    this.props.deleteNote(note.id)
+                    this.props.fetchNotes()
+                  }}
+                >
+                  X
+                </button>
               </li>
             ))}
           </ul>

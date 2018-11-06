@@ -1,4 +1,4 @@
-import { FETCH_NOTES, CREATE_NOTE } from '../actions/types'
+import { FETCH_NOTES } from '../actions/types'
 
 const notesReducer = (state = [], action) => {
   switch (action.type) {

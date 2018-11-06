@@ -6,6 +6,8 @@
   position: relative;
   background-color: $color-bkg;
   .note-list-animated {
+    position: absolute;
+    width: 100%;
     background-color: $color-bkg;
   }
   .navbar {
@@ -68,6 +70,9 @@
   .note-content {
     padding: 10px 0;
     color: #333333;
+  }
+  .note-nav {
+    border-bottom: 1px solid $color-border;
   }
   .new-note {
     position: fixed;

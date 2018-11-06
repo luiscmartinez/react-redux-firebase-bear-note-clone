@@ -21,19 +21,19 @@ class CreateNote extends Component {
   }
 
   handleSubmit = e => {
+    const { title, content } = this.state
     e.preventDefault()
+    if (!title.trim() || !content.trim()) return this.props.history.push('/')
     this.props.createNote(this.state)
     this.props.history.push('/')
   }
 
   componentDidMount () {
-    console.log('🦄 CDM')
     TweenLite.from(this.container, 1, {
       left: '100%',
       ease: Power1.easeOut,
       onComplete: () => this.input.focus()
     })
-    console.log('fired')
   }
 
   render () {

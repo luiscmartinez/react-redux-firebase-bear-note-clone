@@ -142,6 +142,8 @@ table {
   background-color: #FAFAFB;
 }
 .note-list .note-list-animated {
+  position: absolute;
+  width: 100%;
   background-color: #FAFAFB;
 }
 .note-list .navbar {
@@ -205,6 +207,9 @@ table {
   padding: 10px 0;
   color: #333333;
 }
+.note-list .note-nav {
+  border-bottom: 1px solid #D8D8D8;
+}
 .note-list .new-note {
   position: fixed;
   bottom: 10px;
@@ -263,6 +268,7 @@ table {
   flex-direction: column;
   margin: 0 auto;
   width: 90%;
+  caret-color: #DC4B4E;
 }
 .create-note .form-newNote .createTitle {
   background-color: #FAFAFB;
@@ -271,11 +277,18 @@ table {
   border: 0;
   font-weight: 600;
 }
+.create-note .form-newNote .createTitle:focus {
+  outline: 0px;
+}
 .create-note .form-newNote .createContent {
+  margin-top: 20px;
   background-color: #FAFAFB;
   font-size: 1.4rem;
   border: 0;
-  height: 100%;
+  min-height: 100vh;
+}
+.create-note .form-newNote .createContent:focus {
+  outline: 0px;
 }
 
 /*# sourceMappingURL=index.css.map */
