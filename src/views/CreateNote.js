@@ -39,10 +39,7 @@ class CreateNote extends Component {
     const { title, content } = this.state
     return (
       <div className='create-note'>
-        <div
-          className='create-note-animated'
-          ref={ref => (this.container = ref)}
-        >
+        <div className='create-note-animated'>
           <nav className='nav'>
             <Link onClick={this.handleSubmit} className='left-chevron' to='/'>
               <ChevronLeft />
@@ -63,7 +60,6 @@ class CreateNote extends Component {
                 value={title}
                 placeholder='Enter title'
                 onChange={this.handleChange}
-                ref={input => (this.input = input)}
               />
               <textarea
                 className='createContent'

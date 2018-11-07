@@ -31,7 +31,7 @@ class App extends Component {
           <CSSTransition
             classNames='fade'
             key={location.key}
-            timeout={2000}
+            timeout={1000}
             // eslint-disable-next-line
             enter={true}
             // eslint-disable-next-line
@@ -44,7 +44,7 @@ class App extends Component {
                 opacity: 1
               })
 
-              TweenMax.to(node, 2, {
+              TweenMax.to(node, 1, {
                 position: 'absolute',
                 left: isListNote ? 0 : 0,
                 opacity: 1,
@@ -62,7 +62,7 @@ class App extends Component {
                 left: isListNote ? 0 : 0,
                 opacity: 1
               })
-              TweenMax.to(node, 2, {
+              TweenMax.to(node, 1, {
                 position: 'absolute',
                 left: isListNote ? '100%' : '-100%',
                 opacity: 1

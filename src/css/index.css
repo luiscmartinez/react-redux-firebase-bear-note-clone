@@ -208,10 +208,10 @@ table {
   margin-top: 20px;
 }
 .note-list .note-moment {
-  width: 20px;
-  padding: 15px;
+  padding-top: 4px;
+  width: 50px;
   color: #8F8E8E;
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-align: center;
   overflow: hidden;
 }
@@ -219,6 +219,7 @@ table {
   width: 100%;
   border-bottom: 1px solid #D8D8D8;
   overflow: hidden;
+  padding-left: 10px;
 }
 .note-list .note-title {
   margin-bottom: 10px;
@@ -249,6 +250,15 @@ table {
   width: 100%;
   min-height: 100vh;
   background-color: #FAFAFB;
+}
+.create-note * {
+  outline: 2px solid salmon;
+}
+.create-note input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.create-note textarea:focus::-webkit-input-placeholder {
+  color: transparent;
 }
 .create-note .create-note-animated {
   position: absolute;
@@ -284,6 +294,8 @@ table {
 }
 .create-note .markdown {
   width: 5%;
+  font-size: 1.1rem;
+  padding-top: 8px;
   text-align: center;
   color: #8F8E8E;
 }
@@ -295,6 +307,7 @@ table {
   caret-color: #DC4B4E;
 }
 .create-note .form-newNote .createTitle {
+  padding-left: 10px;
   background-color: #FAFAFB;
   font-size: 1.6rem;
   height: 30px;
@@ -305,6 +318,8 @@ table {
   outline: 0px;
 }
 .create-note .form-newNote .createContent {
+  padding-left: 10px;
+  height: 90vh;
   margin-top: 20px;
   background-color: #FAFAFB;
   font-size: 1.4rem;

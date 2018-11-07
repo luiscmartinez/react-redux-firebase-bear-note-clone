@@ -5,6 +5,8 @@ import { Menu, Search, PlusSquare } from 'react-feather'
 import moment from 'moment'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+
+import { TweenMax } from 'gsap'
 moment.relativeTimeThreshold('s', 60)
 moment.relativeTimeThreshold('ss', 5)
 moment.relativeTimeThreshold('m', 60)
@@ -49,24 +51,16 @@ db.settings({ timestampsInSnapshots: true })
 class NoteListContainer extends Component {
   constructor (props) {
     super(props)
-    this.container = null
+    this.list = []
   }
 
   handleCreateNote = () => {
-    // TweenLite.to(this.container, 1, {
-    //   left: '-100%',
-    //   ease: Power1.easeOut,
-    //   onComplete: () => this.props.history.push('/create')
-    // })
     this.props.history.push('/create')
   }
 
   componentDidMount () {
     this.props.fetchNotes()
-    // TweenLite.from(this.container, 1, {
-    //   left: '-100%',
-    //   ease: Power1.easeOut
-    // })
+    TweenMax.staggerFrom(this.list, 2, { x: 30, y: 100, autoAlpha: 0 }, 0.2)
   }
 
   render () {
@@ -86,8 +80,13 @@ class NoteListContainer extends Component {
             </button>
           </nav>
           <ul className='note-list'>
-            {notes.map(note => (
-              <li className='note-container' key={note.id} note={note}>
+            {notes.map((note, i) => (
+              <li
+                className='note-container'
+                key={note.id}
+                note={note}
+                ref={li => (this.list[i] = li)}
+              >
                 <div className='note-moment'>
                   {moment(note.createdAt).fromNow()}
                 </div>

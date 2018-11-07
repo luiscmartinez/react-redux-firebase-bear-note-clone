@@ -1,4 +1,13 @@
 .create-note {
+  * {
+    outline: 2px solid salmon;
+  }
+  input:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  textarea:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
   position: absolute;
   left: 0;
   right: 0;
@@ -39,6 +48,8 @@
   }
   .markdown {
     width: 5%;
+    font-size: 1.1rem;
+    padding-top: 8px;
     text-align: center;
     color: $color-time
   }
@@ -49,6 +60,7 @@
     width: 90%;
     caret-color: $color-newNote;
     .createTitle {
+      padding-left: 10px;
       background-color: $color-bkg;
       font-size: 1.6rem;
       height: 30px;
@@ -59,6 +71,8 @@
       }
     }
     .createContent {
+      padding-left: 10px;
+      height: 90vh;
       margin-top: 20px;
       background-color: $color-bkg;
       font-size: 1.4rem;

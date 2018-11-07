@@ -50,10 +50,10 @@
     margin-top: 20px;
   }
   .note-moment {
-    width: 20px;
-    padding: 15px;
+    padding-top: 4px;
+    width: 50px;
     color: $color-time;
-    font-size: .8rem;
+    font-size: 1.0rem;
     text-align: center;
     overflow: hidden;
   }
@@ -61,6 +61,7 @@
     width: 100%;
     border-bottom: 1px solid $color-border;
     overflow: hidden;
+    padding-left: 10px;
   }
   .note-title {
     margin-bottom: 10px;
