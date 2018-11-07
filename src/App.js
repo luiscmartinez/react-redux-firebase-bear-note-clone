@@ -22,9 +22,8 @@ class App extends Component {
           position: 'absolute',
           width: '100%',
           minHeight: '100vh',
-          overflow: 'hidden',
-          backgroundColor: 'rgb(250,250,250)',
-          border: '1px solid red'
+          overflowX: 'hidden',
+          backgroundColor: 'rgb(250,250,250)'
         }}
       >
         <TransitionGroup>

@@ -1,7 +1,4 @@
 .create-note {
-  * {
-    outline: 2px solid salmon;
-  }
   input:focus::-webkit-input-placeholder {
     color: transparent;
   }
@@ -45,6 +42,23 @@
   }
   .noteContent {
     display: flex;
+    position: relative;
+  }
+  .button-save {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 80px;
+    right: 80px;
+    transform: scale(1.5);
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: 0px;
+    :hover {
+      stroke: red;
+    }
   }
   .markdown {
     width: 5%;
@@ -72,7 +86,7 @@
     }
     .createContent {
       padding-left: 10px;
-      height: 90vh;
+      height: 80vh;
       margin-top: 20px;
       background-color: $color-bkg;
       font-size: 1.4rem;

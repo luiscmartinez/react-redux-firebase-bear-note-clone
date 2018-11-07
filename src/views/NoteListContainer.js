@@ -60,7 +60,7 @@ class NoteListContainer extends Component {
 
   componentDidMount () {
     this.props.fetchNotes()
-    TweenMax.staggerFrom(this.list, 2, { x: 30, y: 100, autoAlpha: 0 }, 0.2)
+    TweenMax.staggerFrom(this.list, 2, { y: 100, autoAlpha: 0 }, 0.2)
   }
 
   render () {

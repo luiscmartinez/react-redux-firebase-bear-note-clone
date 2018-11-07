@@ -134,35 +134,12 @@ table {
   border-spacing: 0;
 }
 
-/* simple - enter transition 300ms, exit 150ms */
-.fade-appear,
-.fade-enter {
-  opacity: 0;
-  z-index: 1;
-}
-
-.fade-appear-active,
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms linear 150ms;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit.fade-exit-active {
-  opacity: 0;
-  transition: opacity 150ms linear;
-}
-
 .note-list {
   position: absolute;
   left: 0;
   right: 0;
   display: flex;
   flex-flow: column;
-  min-height: 100vh;
   width: 100%;
   position: relative;
   background-color: #FAFAFB;
@@ -235,12 +212,16 @@ table {
 }
 .note-list .new-note {
   position: fixed;
+  borer: 0px;
   bottom: 10px;
   right: 10px;
   height: 60px;
   width: 60px;
   border-radius: 50%;
   background-color: #DC4B4E;
+}
+.note-list .new-note :hover {
+  cursor: pointer;
 }
 
 .create-note {
@@ -250,9 +231,6 @@ table {
   width: 100%;
   min-height: 100vh;
   background-color: #FAFAFB;
-}
-.create-note * {
-  outline: 2px solid salmon;
 }
 .create-note input:focus::-webkit-input-placeholder {
   color: transparent;
@@ -291,6 +269,23 @@ table {
 }
 .create-note .noteContent {
   display: flex;
+  position: relative;
+}
+.create-note .button-save {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 80px;
+  right: 80px;
+  transform: scale(1.5);
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: 0px;
+}
+.create-note .button-save :hover {
+  stroke: red;
 }
 .create-note .markdown {
   width: 5%;
@@ -319,7 +314,7 @@ table {
 }
 .create-note .form-newNote .createContent {
   padding-left: 10px;
-  height: 90vh;
+  height: 80vh;
   margin-top: 20px;
   background-color: #FAFAFB;
   font-size: 1.4rem;
