@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import NoteListContainer from './views/NoteListContainer'
 import CreateNote from './views/CreateNote'
+import UpdateNote from './views/UpdateNote'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { TweenMax } from 'gsap/all'
+import * as actions from './store/actions'
+import { connect } from 'react-redux'
 class App extends Component {
   constructor (props) {
     super(props)
@@ -78,6 +81,17 @@ class App extends Component {
                 path='/create'
                 render={props => <CreateNote {...props} />}
               />
+              <Route
+                path='/note/:id'
+                render={props => (
+                  <UpdateNote
+                    {...props}
+                    note={this.props.notes.find(
+                      note => note.id === props.match.params.id
+                    )}
+                  />
+                )}
+              />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
@@ -86,4 +100,5 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = ({ notes }) => ({ notes })
+export default connect(mapStateToProps, actions)(App)

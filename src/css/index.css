@@ -179,27 +179,30 @@ table {
   background-color: transparent;
   border: 0px;
 }
+.note-list .note-link {
+  color: black;
+  text-decoration: none;
+  flex-grow: 1;
+}
 .note-list .note-container {
   display: flex;
-  min-height: 100px;
-  margin-top: 20px;
+  align-items: stretch;
+  border-bottom: 1px solid #D8D8D8;
+  padding: 10px;
 }
 .note-list .note-moment {
-  padding-top: 4px;
-  width: 50px;
+  width: 25px;
   color: #8F8E8E;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-align: center;
   overflow: hidden;
 }
 .note-list .note {
-  width: 100%;
-  border-bottom: 1px solid #D8D8D8;
   overflow: hidden;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 .note-list .note-title {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-size: 1.4rem;
   font-weight: bold;
 }
@@ -208,7 +211,10 @@ table {
   color: #9D9D9E;
 }
 .note-list .note-nav {
-  border-bottom: 1px solid #D8D8D8;
+  cursor: pointer;
+  background: transparent;
+  display: flex;
+  align-items: center;
 }
 .note-list .new-note {
   position: fixed;

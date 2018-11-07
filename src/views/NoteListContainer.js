@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../store/actions'
-import { Menu, Search, PlusSquare } from 'react-feather'
+import { Menu, Search, PlusSquare, Trash2 } from 'react-feather'
 import moment from 'moment'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import { Link } from 'react-router-dom'
 
-import { TweenMax } from 'gsap'
+import { TweenMax, Power1 } from 'gsap'
+
 moment.relativeTimeThreshold('s', 60)
 moment.relativeTimeThreshold('ss', 5)
 moment.relativeTimeThreshold('m', 60)
@@ -60,7 +62,12 @@ class NoteListContainer extends Component {
 
   componentDidMount () {
     this.props.fetchNotes()
-    TweenMax.staggerFrom(this.list, 2, { y: 100, autoAlpha: 0 }, 0.2)
+    TweenMax.staggerFrom(
+      this.list,
+      0.5,
+      { y: 50, autoAlpha: 0, ease: Power1.easeIn },
+      0.3
+    )
   }
 
   render () {
@@ -90,23 +97,25 @@ class NoteListContainer extends Component {
                 <div className='note-moment'>
                   {moment(note.createdAt).fromNow()}
                 </div>
-                <div className='note'>
-                  <h2 className='note-title'>
-                    {note.title}
-                  </h2>
-                  <p className='note-content'>
-                    {note.content}
-                  </p>
-                </div>
-                <button
+                <Link className='note-link' to={`/note/${note.id}`}>
+                  <div className='note'>
+                    <h2 className='note-title'>
+                      {note.title}
+                    </h2>
+                    <p className='note-content'>
+                      {note.content}
+                    </p>
+                  </div>
+                </Link>
+                <div
                   className='note-nav'
                   onClick={() => {
                     this.props.deleteNote(note.id)
                     this.props.fetchNotes()
                   }}
                 >
-                  X
-                </button>
+                  <Trash2 />
+                </div>
               </li>
             ))}
           </ul>
