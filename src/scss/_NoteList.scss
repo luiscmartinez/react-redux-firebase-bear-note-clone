@@ -1,4 +1,7 @@
 .note-list {
+  position: absolute;
+  left: 0;
+  right: 0;
   display: flex;
   flex-flow: column;
   min-height: 100vh;
@@ -40,10 +43,7 @@
     background-color: transparent;
     border: 0px;
   }
-  .note-list {
-    min-height: 100vh;
-    height: 100%;
-  }
+  .note-list {}
   .note-container {
     display: flex;
     min-height: 100px;

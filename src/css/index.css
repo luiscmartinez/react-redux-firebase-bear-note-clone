@@ -108,6 +108,7 @@ section {
 
 body {
   line-height: 1;
+  overflow-x: hidden;
 }
 
 ol,
@@ -133,7 +134,32 @@ table {
   border-spacing: 0;
 }
 
+/* simple - enter transition 300ms, exit 150ms */
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+
 .note-list {
+  position: absolute;
+  left: 0;
+  right: 0;
   display: flex;
   flex-flow: column;
   min-height: 100vh;
@@ -175,10 +201,6 @@ table {
   width: 50px;
   background-color: transparent;
   border: 0px;
-}
-.note-list .note-list {
-  min-height: 100vh;
-  height: 100%;
 }
 .note-list .note-container {
   display: flex;
@@ -222,6 +244,8 @@ table {
 
 .create-note {
   position: absolute;
+  left: 0;
+  right: 0;
   width: 100%;
   min-height: 100vh;
   background-color: #FAFAFB;
@@ -285,7 +309,6 @@ table {
   background-color: #FAFAFB;
   font-size: 1.4rem;
   border: 0;
-  min-height: 100vh;
 }
 .create-note .form-newNote .createContent:focus {
   outline: 0px;

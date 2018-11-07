@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../store/actions'
-import { TweenLite, Power1 } from 'gsap/all'
 import { ChevronLeft, Share, Info } from 'react-feather'
 class CreateNote extends Component {
   constructor (props) {
@@ -29,11 +28,11 @@ class CreateNote extends Component {
   }
 
   componentDidMount () {
-    TweenLite.from(this.container, 1, {
-      left: '100%',
-      ease: Power1.easeOut,
-      onComplete: () => this.input.focus()
-    })
+    // TweenLite.from(this.container, 1, {
+    //   left: '100%',
+    //   ease: Power1.easeOut,
+    //   onComplete: () => this.input.focus()
+    // })
   }
 
   render () {
@@ -77,7 +76,6 @@ class CreateNote extends Component {
             </form>
           </div>
         </div>
-
       </div>
     )
   }

@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 import * as actions from '../store/actions'
 import { Menu, Search, PlusSquare } from 'react-feather'
 import moment from 'moment'
-import firebase from 'firebase'
-import { TweenLite, Power1 } from 'gsap/all'
-
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 moment.relativeTimeThreshold('s', 60)
 moment.relativeTimeThreshold('ss', 5)
 moment.relativeTimeThreshold('m', 60)
@@ -54,29 +53,27 @@ class NoteListContainer extends Component {
   }
 
   handleCreateNote = () => {
-    TweenLite.to(this.container, 1, {
-      left: '-100%',
-      ease: Power1.easeOut,
-      onComplete: () => this.props.history.push('/create')
-    })
+    // TweenLite.to(this.container, 1, {
+    //   left: '-100%',
+    //   ease: Power1.easeOut,
+    //   onComplete: () => this.props.history.push('/create')
+    // })
+    this.props.history.push('/create')
   }
 
   componentDidMount () {
     this.props.fetchNotes()
-    TweenLite.from(this.container, 1, {
-      left: '-100%',
-      ease: Power1.easeOut
-    })
+    // TweenLite.from(this.container, 1, {
+    //   left: '-100%',
+    //   ease: Power1.easeOut
+    // })
   }
 
   render () {
     const { notes } = this.props
     return (
       <div className='note-list'>
-        <div
-          className='note-list-animated'
-          ref={container => (this.container = container)}
-        >
+        <div className='note-list-animated'>
           <nav className='navbar'>
             <button className='nav-menu'>
               <Menu color='#9F9F9F' size='20px' />
