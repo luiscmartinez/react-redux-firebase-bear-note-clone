@@ -62,12 +62,12 @@ class NoteListContainer extends Component {
 
   componentDidMount () {
     this.props.fetchNotes()
-    TweenMax.staggerFrom(
-      this.list,
-      0.5,
-      { y: 50, autoAlpha: 0, ease: Power1.easeIn },
-      0.3
-    )
+    // TweenMax.staggerFrom(
+    //   this.list,
+    //   0.5,
+    //   { y: 50, autoAlpha: 0, ease: Power1.easeIn },
+    //   0.3
+    // )
   }
 
   render () {
@@ -79,9 +79,7 @@ class NoteListContainer extends Component {
             <button className='nav-menu'>
               <Menu color='#9F9F9F' size='20px' />
             </button>
-            <h1 className='nav-title'>
-              NOTES
-            </h1>
+            <h1 className='nav-title'>NOTES</h1>
             <button className='nav-search'>
               <Search color='#9F9F9F' size='20px' />
             </button>
@@ -92,19 +90,15 @@ class NoteListContainer extends Component {
                 className='note-container'
                 key={note.id}
                 note={note}
-                ref={li => (this.list[i] = li)}
+                ref={(li) => (this.list[i] = li)}
               >
                 <div className='note-moment'>
                   {moment(note.createdAt).fromNow()}
                 </div>
                 <Link className='note-link' to={`/note/${note.id}`}>
                   <div className='note'>
-                    <h2 className='note-title'>
-                      {note.title}
-                    </h2>
-                    <p className='note-content'>
-                      {note.content}
-                    </p>
+                    <h2 className='note-title'>{note.title}</h2>
+                    <p className='note-content'>{note.content}</p>
                   </div>
                 </Link>
                 <div

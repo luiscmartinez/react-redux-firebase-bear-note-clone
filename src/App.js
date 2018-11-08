@@ -38,35 +38,37 @@ class App extends Component {
             enter={true}
             // eslint-disable-next-line
             exit={true}
-            onEnter={node => {
+            onEnter={(node) => {
               TweenMax.killTweensOf(node)
-              TweenMax.set(node, {
-                position: 'absolute',
-                left: isListNote ? '-100%' : '100%',
-                opacity: 1
-              })
-
+              // TweenMax.set(node, {
+              //   position: 'absolute',
+              //   left:  '100%',
+              //   opacity: 1
+              // })
               TweenMax.to(node, 1, {
                 position: 'absolute',
-                left: isListNote ? 0 : 0,
-                opacity: 1,
-                onComplete: () =>
-                  this.setState({
-                    isListNote: !isListNote,
-                    isCreateNote: !isCreateNote
-                  })
+                left: '0%',
+                opacity: 1
+                // onComplete: () =>
+                //   this.setState({
+                //     isListNote: !isListNote,
+                //     isCreateNote: !isCreateNote
+                //   })
               })
             }}
-            onExit={node => {
+            onExit={(node) => {
               TweenMax.killTweensOf(node)
-              TweenMax.set(node, {
-                position: 'absolute',
-                left: isListNote ? 0 : 0,
-                opacity: 1
-              })
+              // if (node.classList.contains('create-note')) {
+              //   console.log('in here ', node)
+              //   TweenMax.to(node, 1, {
+              //     position: 'absolute',
+              //     left: '0',
+              //     opacity: 1
+              //   })
+              // }
               TweenMax.to(node, 1, {
                 position: 'absolute',
-                left: isListNote ? '100%' : '-100%',
+                left: '-100%',
                 opacity: 1
               })
             }}
@@ -75,19 +77,19 @@ class App extends Component {
               <Route
                 exact
                 path='/'
-                render={props => <NoteListContainer {...props} />}
+                render={(props) => <NoteListContainer {...props} />}
               />
               <Route
                 path='/create'
-                render={props => <CreateNote {...props} />}
+                render={(props) => <CreateNote {...props} />}
               />
               <Route
                 path='/note/:id'
-                render={props => (
+                render={(props) => (
                   <UpdateNote
                     {...props}
                     note={this.props.notes.find(
-                      note => note.id === props.match.params.id
+                      (note) => note.id === props.match.params.id
                     )}
                   />
                 )}
